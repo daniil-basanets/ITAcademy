@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Chess": {
+      "commandName": "Project",
+      "commandLineArgs": "8 8 Ж"
+    }
+  }
+}
