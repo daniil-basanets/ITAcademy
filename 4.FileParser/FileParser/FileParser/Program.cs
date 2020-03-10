@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-
-namespace FileParser
+﻿namespace FileParser
 {
     class Program
     {

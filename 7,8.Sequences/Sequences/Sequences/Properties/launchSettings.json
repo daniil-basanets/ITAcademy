@@ -2,7 +2,7 @@
   "profiles": {
     "Sequence": {
       "commandName": "Project",
-      "commandLineArgs": "1 300 1"
+      "commandLineArgs": "1 92 1"
     }
   }
 }
