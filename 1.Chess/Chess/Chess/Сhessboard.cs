@@ -4,27 +4,41 @@ namespace Chess
 {
     class Сhessboard
     {
-        private readonly byte height;
-        private readonly byte width;
-        private BoardItem[,] board;
-        private readonly char DrawSymbol = '*';
+        #region Private Members
 
-        public Сhessboard(byte rows, byte colls, char drawSymbol = '*')
+        private readonly int height;
+        private readonly int width;
+        private readonly BoardItem[,] board;
+        private readonly char blackSymbol = '*';
+        private const char whiteSymbol = ' ';
+
+        #endregion
+
+        public Сhessboard(int x, int y, char blackSymbol = '*')
         {
-            width = colls;
-            height = rows;
+            width = x;
+            height = y;
             board = new BoardItem[height, width];
-            for (byte i = 0; i < height; i++)
+            FillBoardItems();
+            this.blackSymbol = blackSymbol;
+        }
+
+        private void FillBoardItems()
+        {
+            for (int i = 0; i < height; i++)
             {
-                for (byte j = 0; j < width; j++)
+                for (int j = 0; j < width; j++)
                 {
                     if (i % 2 == 0)
+                    {
                         board[i, j] = new BoardItem(j % 2 == 0, i, j);
+                    }
                     else
+                    {
                         board[i, j] = new BoardItem(j % 2 != 0, i, j);
+                    }
                 }
             }
-            DrawSymbol = drawSymbol;
         }
 
         public void DrawBoard()
@@ -33,7 +47,7 @@ namespace Chess
             {
                 for (int j = 0; j < width; j++)
                 {
-                    Console.Write("{0, -2}", board[i, j].IsBlack ? DrawSymbol : ' ');
+                    Console.Write("{0, -2}", board[i, j].IsBlack ? blackSymbol : whiteSymbol);
                 }
                 Console.WriteLine();
             }

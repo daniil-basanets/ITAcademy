@@ -2,12 +2,13 @@
 {
     struct Coordinates
     {
-        public byte Row { get; set; }
-        public byte Coll { get; set; }
-        public Coordinates(byte rowNum, byte colNum)
+        public int Y { get; set; }
+        public int X { get; set; }
+
+        public Coordinates(int x, int y)
         {
-            Row = rowNum;
-            Coll = colNum;
+            X = x;
+            Y = y;
         }
     }
 
@@ -15,12 +16,12 @@
     {
         public Coordinates Position { get; set; }
         public ChessFigure Figure { get; set; }
-
         public bool IsBlack { get; }
-        public BoardItem(bool IsBlack, byte rowNum, byte colNum)
+
+        public BoardItem(bool IsBlack, int x, int y)
         {
             this.IsBlack = IsBlack;
-            Position = new Coordinates(rowNum, colNum);
+            Position = new Coordinates(x, y);
         }
     }
 }
