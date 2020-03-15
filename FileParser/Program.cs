@@ -10,13 +10,13 @@ namespace FileParser
         {
             if (args.Length < 2)
             {
-                System.Console.WriteLine(ErrorCode.InvalidParameters.GetMessage());
+                System.Console.WriteLine(ErrorCode.InvalidParametersCount.GetMessage());
                 System.Console.WriteLine(HELP_STRING);
 
                 return;
             }
 
-            if(!Validator.IsFileExists(args[0] == null ? "" : args[0]))
+            if(!Validator.IsFileExists(args[0] ?? ""))
             {
                 System.Console.WriteLine(ErrorCode.FileNotFound.GetMessage());
                 System.Console.WriteLine(HELP_STRING);

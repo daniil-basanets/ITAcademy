@@ -8,7 +8,7 @@ namespace FileParser
     {
         #region Private Members
 
-        private IOperationProcessor worker;
+        private readonly IOperationProcessor worker;
 
         #endregion
 
