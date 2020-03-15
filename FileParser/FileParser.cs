@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace FileParser
 {
-    class FileParser : IFileOperations
+    class FileParser : IOperationProcessor
     {
         #region Private Members
 

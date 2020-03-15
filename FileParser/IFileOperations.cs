@@ -1,6 +1,6 @@
 ﻿namespace FileParser
 {
-    interface IFileOperations
+    interface IOperationProcessor
     {
         int MatchCount(CountReplaceModel countReplaceModel);
         int ReplaceString(CountReplaceModel countReplaceModel);

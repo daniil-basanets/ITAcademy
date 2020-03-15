@@ -12,18 +12,18 @@ namespace Chess
         private readonly char blackSymbol = '*';
         private const char whiteSymbol = ' ';
 
-        #endregion
+        #endregion 
 
         public Сhessboard(int x, int y, char blackSymbol = '*')
         {
             width = x;
             height = y;
             board = new BoardItem[height, width];
-            FillBoardItems();
+            CreateBoardItems();
             this.blackSymbol = blackSymbol;
         }
 
-        private void FillBoardItems()
+        private void CreateBoardItems()
         {
             for (int i = 0; i < height; i++)
             {
