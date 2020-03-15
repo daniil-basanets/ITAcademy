@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 
 namespace Helpers
 {
-
     static class Parser
     {
         static public ErrorCode TryGetRange(string[] s, out int start, out int end)
@@ -14,12 +14,12 @@ namespace Helpers
 
             if (s.Length < 2)
             {
-                return ErrorCode.InvalidParameters;
+                return ErrorCode.InvalidParametersCount;
             }
 
             if (!Int32.TryParse(s[0], out start) || !Int32.TryParse(s[1], out end))
             {
-                return ErrorCode.InvalidParameters;
+                return ErrorCode.CannotConvertParameter;
             }
 
             return ErrorCode.Void;
@@ -31,12 +31,41 @@ namespace Helpers
 
             if (s.Length - 1 < argIndex)
             {
-                return ErrorCode.InvalidParameters;
+                return ErrorCode.InvalidParametersCount;
             }
 
             if (!Int32.TryParse(s[argIndex], out value))
             {
-                return ErrorCode.InvalidParameters;
+                return ErrorCode.CannotConvertParameter;
+            }
+
+            return ErrorCode.Void;
+        }
+
+        static public ErrorCode TryGetFloat(string[] s, int argIndex, out float value)
+        {
+            value = 0f;
+
+            if (s.Length - 1 < argIndex)
+            {
+                return ErrorCode.InvalidParametersCount;
+            }
+
+            if (!float.TryParse(s[argIndex], NumberStyles.Any, CultureInfo.InvariantCulture, out value))
+            {
+                return ErrorCode.CannotConvertParameter;
+            }
+
+            return ErrorCode.Void;
+        }
+
+        static public ErrorCode TryGetFloat(string s, out float value)
+        {
+            value = 0f;
+
+            if (!float.TryParse(s, NumberStyles.Any, CultureInfo.InvariantCulture, out value))
+            {
+                return ErrorCode.CannotConvertParameter;
             }
 
             return ErrorCode.Void;

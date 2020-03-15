@@ -17,6 +17,21 @@ namespace Helpers
             return number >= start && number <= max;
         }
 
+        static public bool IsNumberInRange(float number, float start, float max)
+        {
+            return number >= start && number <= max;
+        }
+
+        static public bool IsPositiveNumber(int number)
+        {
+            return IsNumberInRange(number, 0, Int32.MaxValue);
+        }
+
+        static public bool IsPositiveNumber(float number)
+        {
+            return IsNumberInRange(number, 0f, float.MaxValue);
+        }
+
         static public bool IsFileExists(string fileName)
         {
             if (File.Exists(fileName))
