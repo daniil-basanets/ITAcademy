@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace EnvelopeAnalyzer
+﻿namespace EnvelopeAnalyzer
 {
     class Program
     {

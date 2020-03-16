@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using EnvelopeAnalyzer.Models;
+﻿using EnvelopeAnalyzer.Models;
 
 namespace EnvelopeAnalyzer.Implementation
 {
-    class Rectangular: CommonEnvelope 
+    class Rectangular : CommonEnvelope
     {
         #region Private Members
 

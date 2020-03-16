@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using EnvelopeAnalyzer.Models;
+﻿using EnvelopeAnalyzer.Models;
 using Helpers;
+using System;
 
 namespace EnvelopeAnalyzer
 {
@@ -66,7 +64,7 @@ namespace EnvelopeAnalyzer
                 {
                     Console.WriteLine("\r\nThe envelopes do not fit each other!\r\n");
                 }
-                
+
 
                 firstEnvelope = null;
                 secondEnvelope = null;
@@ -87,25 +85,32 @@ namespace EnvelopeAnalyzer
             float height;
             string s;
             ErrorCode errorCode;
+            CommonEnvelope envelope = null;
 
-            Console.WriteLine("\r\nPlease, set {0} Envelope`s", envelopeName);
-            Console.Write("width: ");
-            s = Console.ReadLine();
-            errorCode = Parser.TryGetFloat(s, out width);
-            if (errorCode != ErrorCode.Void)
+            do
             {
-                Console.WriteLine(errorCode.GetMessage());
-            }
+                Console.WriteLine("\r\nPlease, set {0} Envelope`s", envelopeName);
+                Console.Write("width: ");
+                s = Console.ReadLine();
+                errorCode = Parser.TryGetFloat(s, out width);
+                if (errorCode != ErrorCode.Void)
+                {
+                    Console.WriteLine(errorCode.GetMessage());
+                    continue;
+                }
 
-            Console.Write("height: ");
-            s = Console.ReadLine();
-            errorCode = Parser.TryGetFloat(s, out height);
-            if (errorCode != ErrorCode.Void)
-            {
-                Console.WriteLine(errorCode.GetMessage());
-            }
+                Console.Write("height: ");
+                s = Console.ReadLine();
+                errorCode = Parser.TryGetFloat(s, out height);
+                if (errorCode != ErrorCode.Void)
+                {
+                    Console.WriteLine(errorCode.GetMessage());
+                    continue;
+                }
 
-            CommonEnvelope envelope = new EnvelopeAnalyzer.Implementation.Rectangular(width, height);
+                envelope = new EnvelopeAnalyzer.Implementation.Rectangular(width, height);
+
+            } while (envelope == null);
 
             return envelope;
         }

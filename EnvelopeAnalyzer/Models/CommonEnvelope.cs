@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Helpers;
+﻿using Helpers;
+using System;
 
 namespace EnvelopeAnalyzer.Models
 {
@@ -12,7 +10,7 @@ namespace EnvelopeAnalyzer.Models
         public CommonEnvelope InnerItem
         {
             get { return innerItem; }
-            set 
+            set
             {
                 if (IsEnoughSpaceFor(value))
                 {
