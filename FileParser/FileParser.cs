@@ -1,5 +1,4 @@
-﻿using System.Text;
-using System.IO;
+﻿using System.IO;
 using System.Text.RegularExpressions;
 
 namespace FileParser
@@ -8,6 +7,7 @@ namespace FileParser
     {
         #region Private Members
 
+        const string TEMP_FILE_NAME = "tmp_file";
         private readonly int bufferSize;
 
         #endregion
@@ -32,10 +32,10 @@ namespace FileParser
                 using var stream = new StreamReader(buffStream);
                 while (!stream.EndOfStream)
                 {
-                    s = stream.ReadLine();                  
+                    s = stream.ReadLine();
                     matches = regex.Matches(s);
                     matchCount += matches.Count;
-                }              
+                }
             }
 
             return matchCount;
@@ -44,32 +44,44 @@ namespace FileParser
         public int ReplaceString(CountReplaceModel countReplaceModel)
         {
             int replaceCount = 0;
-            int len = 0;
             string s;
             Regex regex = new Regex(countReplaceModel.SearchString);
-            byte[] buff = new byte[bufferSize];
 
-            using FileStream fileStream = new FileStream(FilePath, FileMode.OpenOrCreate, FileAccess.ReadWrite);
-            using (var buffStream = new BufferedStream(fileStream, bufferSize))
-            {               
-                while( len < buffStream.Length)
+            using (var buffReader = new BufferedStream(File.OpenRead(FilePath), bufferSize))
+            {
+                using var buffWriter = new BufferedStream(File.OpenWrite(TEMP_FILE_NAME), bufferSize);
+                using var reader = new StreamReader(buffReader);
+                using var writer = new StreamWriter(buffWriter);
+
+                while (!reader.EndOfStream)
                 {
-                    len += buffStream.Read(buff, (int)0, bufferSize);
-                    s = Encoding.UTF8.GetString(buff);
-                    while (regex.IsMatch(s))
-                    {
-                        s = regex.Replace(s, countReplaceModel.ReplaceString);
-                        replaceCount++;
-                    }
-                    buff = Encoding.UTF8.GetBytes(s);
-                    buffStream.Seek( -bufferSize, SeekOrigin.Current);
-                    buffStream.Write(buff, 0, bufferSize);
+                    s = reader.ReadLine();
+                    replaceCount += regex.Matches(s).Count;
+                    s = ReplaceStringWithRegex(s, countReplaceModel.ReplaceString, regex);
+                    writer.WriteLine(s);
                 }
-                buffStream.Flush();
-                buffStream.Close();
+
+                writer.Flush();
+                writer.Close();
+
+                reader.Close();
+
+                File.Delete(FilePath);
+                File.Move(TEMP_FILE_NAME, FilePath);
             }
-            
+
             return replaceCount;
         }
+
+        public static string ReplaceStringWithRegex(string input, string replacement, Regex regex)
+        {
+            if (regex.IsMatch(input))
+            {
+                return regex.Replace(input, replacement);
+            }
+
+            return input;   //nothing replaced
+        }
+
     }
 }

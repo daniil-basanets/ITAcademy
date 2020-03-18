@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace FileParser
+﻿namespace FileParser
 {
     class TextProcessor
     {
@@ -14,12 +10,12 @@ namespace FileParser
 
         public CountReplaceModel CountReplaceData { get; set; }
 
-         public TextProcessor(IOperationProcessor processor)
+        public TextProcessor(IOperationProcessor processor)
         {
             worker = processor;
         }
 
-        public TextProcessor(IOperationProcessor processor, CountReplaceModel data):
+        public TextProcessor(IOperationProcessor processor, CountReplaceModel data) :
             this(processor)
         {
             CountReplaceData = data;
@@ -27,7 +23,7 @@ namespace FileParser
 
         public int CountSubstring()
         {
-           return CountSubstring(CountReplaceData); 
+            return CountSubstring(CountReplaceData);
         }
 
         public int CountSubstring(CountReplaceModel countReplaceData)

@@ -2,7 +2,7 @@
   "profiles": {
     "FileParser": {
       "commandName": "Project",
-      "commandLineArgs": "test.txt i2"
+      "commandLineArgs": "t.txt int double"
     }
   }
 }
