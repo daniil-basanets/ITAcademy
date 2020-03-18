@@ -59,8 +59,6 @@ namespace HelpersLibrary
 
         static public ErrorCode TryGetFloat(string s, out float value)
         {
-            value = 0f;
-
             if (!float.TryParse(s, NumberStyles.Any, CultureInfo.InvariantCulture, out value))
             {
                 return ErrorCode.CannotConvertParameter;
