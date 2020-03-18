@@ -5,6 +5,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
-  <Import Project="..\Helpers\Helpers.projitems" Label="Shared" />
+  <ItemGroup>
+    <ProjectReference Include="..\HelpersLibrary\HelpersLibrary.csproj" />
+  </ItemGroup>
 
 </Project>

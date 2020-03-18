@@ -1,6 +1,6 @@
-﻿namespace Helpers
+﻿namespace HelpersLibrary
 {
-    internal enum ErrorCode
+    public enum ErrorCode
     {
         Void = 0,
         InvalidParametersCount = 1,
@@ -10,7 +10,7 @@
         InvalidProperty = 5
     }
 
-    static class Errors
+    public static class Errors
     {
         private static readonly string[] errorMessages = { "", "Invalid parameters!", "Invalid parameter range!", "File not found!", "Invalid property" };
 

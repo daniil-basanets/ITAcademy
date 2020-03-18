@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 
-namespace Helpers
+namespace HelpersLibrary
 {
-    static class Validator
+    public static class Validator
     {
         static public bool IsNaturalNumber(int number, int max = Int32.MaxValue)
         {

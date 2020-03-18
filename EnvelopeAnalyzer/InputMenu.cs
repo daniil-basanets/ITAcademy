@@ -1,5 +1,5 @@
 ﻿using EnvelopeAnalyzer.Models;
-using Helpers;
+using HelpersLibrary;
 using System;
 
 namespace EnvelopeAnalyzer

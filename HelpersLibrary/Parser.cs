@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Helpers
+namespace HelpersLibrary
 {
-    static class Parser
+    public static class Parser
     {
         static public ErrorCode TryGetRange(string[] s, out int start, out int end)
         {
