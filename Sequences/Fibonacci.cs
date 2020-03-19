@@ -12,7 +12,7 @@ namespace Sequences
 
             yield return prevElement;
 
-            while(true)
+            while (true)
             {
                 yield return currentElement;
 
@@ -23,9 +23,9 @@ namespace Sequences
         }
 
         public IList<long> Generate(int startIndex, int endIndex)
-        { 
+        {
             var result = GetEnumerator().Skip(startIndex - 1).Take(endIndex - startIndex + 1).ToList();
-   
+
             return result;
         }
     }

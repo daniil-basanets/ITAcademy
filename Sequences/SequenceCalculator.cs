@@ -6,7 +6,7 @@ namespace Sequences
     class SequenceCalculator
     {
         #region private members
-        
+
         private ISequence sequence;
 
         #endregion 

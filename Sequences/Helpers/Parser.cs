@@ -16,7 +16,7 @@ namespace Sequence.Helpers
             start = 0;
             end = 0;
 
-            if(s.Length < 2)
+            if (s.Length < 2)
             {
                 return ErrorCode.InvalidParameters;
             }
@@ -33,7 +33,7 @@ namespace Sequence.Helpers
         {
             value = 0;
 
-            if(s.Length - 1 < argIndex)
+            if (s.Length - 1 < argIndex)
             {
                 return ErrorCode.InvalidParameters;
             }
