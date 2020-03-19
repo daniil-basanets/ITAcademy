@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace NumberToWords.Models
+namespace NumberToWords.Interface
 {
     interface IStringNumerals
     {

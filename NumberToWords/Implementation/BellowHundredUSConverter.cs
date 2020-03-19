@@ -1,10 +1,12 @@
-﻿using NumberToWords.Models;
+﻿using NumberToWords.Interface;
 using System.Text;
 
 namespace NumberToWords.Implementation
 {
-    class BellowHundredConverter : IStringNumerals
+    class BellowHundredUSConverter : IStringNumerals
     {
+        #region Private Members
+
         private readonly string[] baseDigitWords =
             {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
 
@@ -14,18 +16,15 @@ namespace NumberToWords.Implementation
         private readonly string[] dozenWords =
           {"twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
 
-        public string GetString(int sourceNumber) 
+        #endregion
+
+        public string GetString(int sourceNumber)
         {
             return GetStringBuilder(sourceNumber).ToString();
         }
 
         public StringBuilder GetStringBuilder(int sourceNumber)
         {
-            /*  if (number == 0)
-           {
-               return "";
-           }*/
-
             if (sourceNumber >= 20)
             {
                 int unit = sourceNumber % 10;

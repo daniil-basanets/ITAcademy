@@ -1,5 +1,4 @@
 ﻿using NumberToWords.Implementation;
-using NumberToWords.Models;
 using System;
 
 namespace NumberToWords
@@ -8,18 +7,16 @@ namespace NumberToWords
     {
         static void Main(string[] args)
         {
-            int n = 123_456_789;
-            IStringNumerals num = new BellowHundredConverter();
-
-            var s = new NumberStringBuilder(n).GetString(n);
-            Console.WriteLine(s);
-
-            for (int i = 110; i < 200; i++)
+            var rand = new Random();
+            for (int i = 0; i < 150; i++)
             {
-                Console.WriteLine(new NumberStringBuilder(i).GetString(i));
+                var m = rand.Next() * 10;
+                //Console.WriteLine(m.ToString("#,#", CultureInfo.InvariantCulture) + " " + new NumberStringBuilder(m).GetString(m));
+                Console.WriteLine(new NumberStringBuilder(m).GetString(m));
             }
-            
-            
+
+            Console.ReadLine();
+
         }
     }
 }
