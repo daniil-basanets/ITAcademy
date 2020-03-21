@@ -2,7 +2,7 @@
   "profiles": {
     "FileParser": {
       "commandName": "Project",
-      "commandLineArgs": "t.txt int double"
+      "commandLineArgs": "te3st.txt i"
     }
   }
 }

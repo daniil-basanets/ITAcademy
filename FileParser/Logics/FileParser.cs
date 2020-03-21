@@ -29,17 +29,17 @@ namespace FileParser.Logics
             string s;
             Regex regex = new Regex(countReplaceModel.SearchPattern);
             MatchCollection matches;
+            
+            using var buffStream = new BufferedStream(File.OpenRead(FilePath), bufferSize);
+            using var stream = new StreamReader(buffStream);
 
-            using (var buffStream = new BufferedStream(File.OpenRead(FilePath), bufferSize))
+            while (!stream.EndOfStream)
             {
-                using var stream = new StreamReader(buffStream);
-                while (!stream.EndOfStream)
-                {
-                    s = stream.ReadLine();
-                    matches = regex.Matches(s);
-                    matchCount += matches.Count;
-                }
+                s = stream.ReadLine();
+                matches = regex.Matches(s);
+                matchCount += matches.Count;
             }
+
 
             return matchCount;
         }

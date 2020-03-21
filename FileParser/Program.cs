@@ -52,7 +52,7 @@ namespace FileParser
 
                 return;
             }
-
+            
             #endregion
 
             var searchReplaceData = new MatchCountReplaceModel(args[1], args.Length == 3 ? args[2] : null);

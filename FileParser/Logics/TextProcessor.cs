@@ -1,5 +1,6 @@
 ﻿using FileParser.Interfaces;
 using FileParser.Models;
+using log4net;
 
 namespace FileParser.Logics
 {
@@ -9,7 +10,7 @@ namespace FileParser.Logics
     internal class TextProcessor
     {
         #region Private Members
-
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private readonly IOperationProcessor worker;
 
         #endregion
@@ -43,12 +44,32 @@ namespace FileParser.Logics
 
         public int CountSubstring(MatchCountReplaceModel countReplaceData)
         {
-            return worker.MatchCount(countReplaceData);
+            int count;
+            try
+            {
+                count = worker.MatchCount(countReplaceData);
+            }
+            catch (System.Exception e)
+            {
+                log.Error(e);
+                throw;
+            }
+            return count;
         }
 
         public int ReplaceSubstring(MatchCountReplaceModel countReplaceData)
         {
-            return worker.ReplaceString(countReplaceData);
+            int count;
+            try
+            {
+                count = worker.ReplaceString(countReplaceData);
+            }
+            catch (System.Exception e)
+            {
+                log.Error(e);
+                throw;
+            }
+            return count;
         }
 
         public int ReplaceSubstring()
