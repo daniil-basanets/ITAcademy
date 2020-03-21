@@ -3,9 +3,12 @@ using System.Globalization;
 
 namespace HelpersLibrary
 {
+    /// <summary>
+    /// Represents static class for parsing with additional errors info.
+    /// </summary>
     public static class Parser
     {
-        static public ErrorCode TryGetRange(string[] s, out int start, out int end)
+      /*  static public ErrorCode TryGetRange(string[] s, out int start, out int end)
         {
             start = 0;
             end = 0;
@@ -21,50 +24,71 @@ namespace HelpersLibrary
             }
 
             return ErrorCode.Void;
-        }
+        }*/
 
-        static public ErrorCode TryGetInt(string[] s, int argIndex, out int value)
+        static public int TryGetInt(string[] s, int argIndex, out ErrorCode errorCode)
         {
-            value = 0;
+            errorCode = ErrorCode.Void;
+            int value = 0;
 
             if (s.Length - 1 < argIndex)
             {
-                return ErrorCode.InvalidParametersCount;
+                errorCode = ErrorCode.InvalidParametersCount;
+                return value;
             }
-
-            if (!Int32.TryParse(s[argIndex], out value))
+            else if (!int.TryParse(s[argIndex], out value))
             {
-                return ErrorCode.CannotConvertParameter;
+                errorCode = ErrorCode.CannotConvertParameter;
             }
 
-            return ErrorCode.Void;
+            return value;
         }
 
-        static public ErrorCode TryGetFloat(string[] s, int argIndex, out float value)
+        static public float TryGetFloat(string[] stringArray, int argIndex, out ErrorCode errorCode)
         {
-            value = 0f;
-
-            if (s.Length - 1 < argIndex)
+            float value = 0f;
+            
+            if (stringArray.Length - 1 < argIndex)
             {
-                return ErrorCode.InvalidParametersCount;
+                errorCode = ErrorCode.InvalidParametersCount;
+                return value;
             }
-
-            if (!float.TryParse(s[argIndex], NumberStyles.Any, CultureInfo.InvariantCulture, out value))
+            else
             {
-                return ErrorCode.CannotConvertParameter;
+                value = TryGetFloat(stringArray[argIndex], out errorCode);
             }
+                 
 
-            return ErrorCode.Void;
+            return value;
         }
 
-        static public ErrorCode TryGetFloat(string s, out float value)
+        static public float TryGetFloat(string s, out ErrorCode errorCode)
         {
-            if (!float.TryParse(s, NumberStyles.Any, CultureInfo.InvariantCulture, out value))
+            errorCode = ErrorCode.Void;
+
+            if (!float.TryParse(s, NumberStyles.Any, CultureInfo.InvariantCulture, out float value))
             {
-                return ErrorCode.CannotConvertParameter;
+                errorCode = ErrorCode.CannotConvertParameter;
             }
 
-            return ErrorCode.Void;
+            return value;
+        }
+
+        static public string TryGetString(string[] stringArray, int paramIndex, out ErrorCode errorCode)
+        {
+            errorCode = ErrorCode.Void;
+
+            if (stringArray.Length - 1 < paramIndex)
+            {
+                errorCode = ErrorCode.InvalidParametersCount;
+                return null;
+            }
+            else if (stringArray[paramIndex] == null)
+            {
+                errorCode = ErrorCode.StringIsEmpty;
+            }
+
+            return stringArray[paramIndex];
         }
     }
 }

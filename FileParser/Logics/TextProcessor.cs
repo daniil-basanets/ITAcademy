@@ -6,7 +6,7 @@ namespace FileParser.Logics
     /// <summary>
     /// Represents a text processor for the match count, replacing. Using IOperationProcessor for processing
     /// </summary>
-    class TextProcessor
+    internal class TextProcessor
     {
         #region Private Members
 

@@ -19,13 +19,13 @@ namespace EnvelopeAnalyzer
             float height;
             ErrorCode errorCode;
 
-            errorCode = Parser.TryGetFloat(args, 0, out width);
+            width = Parser.TryGetFloat(args, 0, out errorCode);
             if (errorCode != ErrorCode.Void)
             {
                 return null;
             }
 
-            errorCode = Parser.TryGetFloat(args, 1, out height);
+            height = Parser.TryGetFloat(args, 1, out errorCode);
             if (errorCode != ErrorCode.Void)
             {
                 return null;
@@ -92,7 +92,7 @@ namespace EnvelopeAnalyzer
                 Console.WriteLine("\r\nPlease, set {0} Envelope`s", envelopeName);
                 Console.Write("width: ");
                 s = Console.ReadLine();
-                errorCode = Parser.TryGetFloat(s, out width);
+                width = Parser.TryGetFloat(s, out errorCode);
                 if (errorCode != ErrorCode.Void)
                 {
                     Console.WriteLine(errorCode.GetMessage());
@@ -101,7 +101,7 @@ namespace EnvelopeAnalyzer
 
                 Console.Write("height: ");
                 s = Console.ReadLine();
-                errorCode = Parser.TryGetFloat(s, out height);
+                height = Parser.TryGetFloat(s, out errorCode);
                 if (errorCode != ErrorCode.Void)
                 {
                     Console.WriteLine(errorCode.GetMessage());

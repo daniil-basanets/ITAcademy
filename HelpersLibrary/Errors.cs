@@ -1,4 +1,7 @@
-﻿namespace HelpersLibrary
+﻿using log4net;
+using System.Text;
+
+namespace HelpersLibrary
 {
     public enum ErrorCode
     {
@@ -7,16 +10,29 @@
         CannotConvertParameter = 2,
         OverflowRange = 3,
         FileNotFound = 4,
-        InvalidProperty = 5
+        InvalidProperty = 5,
+        StringIsEmpty = 6
     }
 
     public static class Errors
     {
-        private static readonly string[] errorMessages = { "", "Invalid parameters!", "Invalid parameter range!", "File not found!", "Invalid property" };
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public static string GetMessage(this ErrorCode errorCode)
+        private static readonly string[] errorMessages = { "", "Invalid parameters count!", "Cannot convert parameter!",
+            "Invalid parameter range!", "File not found!", "Invalid property", "String is empty" };
+
+        public static string GetMessage(this ErrorCode errorCode, string additionalText = null)
         {
-            return errorMessages[(int)errorCode];
+            StringBuilder stringBuilder = new StringBuilder(errorMessages[(int)errorCode]);
+            if (additionalText != null)
+            {
+                stringBuilder.Append(" ");
+                stringBuilder.Append(additionalText);
+            }
+            
+            log.Error(stringBuilder.ToString());
+
+            return stringBuilder.ToString();
         }
     }
 }

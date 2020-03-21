@@ -9,11 +9,13 @@ namespace FileParser
 {
     class Program
     {
-        public static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         private const string HELP_STRING = "\n\r[HELP] Use parameters: \n\rfileName searchPattern\n\rfileName searchPattern replacePattern";
 
         private static void Main(string[] args)
         {
+            string fileName;
+            
             #region Initialize logger
 
             var logRepository = LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly());
@@ -22,33 +24,52 @@ namespace FileParser
 
             #endregion
 
+            #region Check input data
+
+            ErrorCode errorCode;
+
+            fileName = Parser.TryGetString(args, 0, out errorCode);
+            if (errorCode != ErrorCode.Void)
+            {
+                Console.WriteLine(errorCode.GetMessage());
+                Console.WriteLine(HELP_STRING);
+
+                return;
+            }
 
             if (args.Length < 2)
             {
                 Console.WriteLine(ErrorCode.InvalidParametersCount.GetMessage());
-                System.Console.WriteLine(HELP_STRING);
+                Console.WriteLine(HELP_STRING);
 
                 return;
             }
 
-            if (!Validator.IsFileExists(args[0] ?? ""))
+            if (!Validator.IsFileExists(args[0]))
             {
-                System.Console.WriteLine(ErrorCode.FileNotFound.GetMessage());
-                System.Console.WriteLine(HELP_STRING);
+                Console.WriteLine(ErrorCode.FileNotFound.GetMessage(args[0]));
+                Console.WriteLine(HELP_STRING);
 
                 return;
             }
 
-            //var data = new CountReplaceModel(args[1], args.Length == 3 ? args[2] : null);
-            //TextProcessor textProcessor = new TextProcessor(new FileParser(args[0]), data);
+            #endregion
 
-            var data = new MatchCountReplaceModel(" ", null);
+            var searchReplaceData = new MatchCountReplaceModel(args[1], args.Length == 3 ? args[2] : null);
 
-            var data2 = new MatchCountReplaceModel(" ", "*");
+            
+            TextProcessor textProcessor = new TextProcessor(new FileProcessor(fileName), searchReplaceData);
 
-            TextProcessor textProcessor = new TextProcessor(new FileProcessor("t.txt"), data2);
-            int count2 = textProcessor.StartAutoParsing();
-            System.Console.WriteLine(count2);
+            for (int i = 0; i < 10; i++)
+            {
+                var stopwatch = System.Diagnostics.Stopwatch.StartNew();
+                textProcessor.StartAutoParsing();
+                stopwatch.Stop();
+                Console.WriteLine(((double)(stopwatch.Elapsed.TotalSeconds)).ToString("0.00 s"));
+            }
+
+            var count = textProcessor.StartAutoParsing();            
+           
 
             log.Info("Application [FileParser] End");
         }
