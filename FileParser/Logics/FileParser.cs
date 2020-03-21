@@ -1,30 +1,33 @@
 ﻿using System.IO;
 using System.Text.RegularExpressions;
+using FileParser.Interfaces;
+using FileParser.Models;
 
-namespace FileParser
+namespace FileParser.Logics
 {
-    class FileParser : IOperationProcessor
+    class FileProcessor : IOperationProcessor
     {
         #region Private Members
 
-        const string TEMP_FILE_NAME = "tmp_file";
+        const string TEMP_FILE_NAME = "Temp_FileParser_File";
+        const int DEFAULT_BUFFER_SIZE = 4096;
         private readonly int bufferSize;
 
         #endregion
 
-        public FileParser(string filePath)
+        public string FilePath { get; set; }
+
+        public FileProcessor(string filePath)
         {
-            bufferSize = 1024;
+            bufferSize = DEFAULT_BUFFER_SIZE;
             FilePath = filePath;
         }
 
-        public string FilePath { get; set; }
-
-        public int MatchCount(CountReplaceModel countReplaceModel)
+        public int MatchCount(MatchCountReplaceModel countReplaceModel)
         {
             int matchCount = 0;
             string s;
-            Regex regex = new Regex(countReplaceModel.SearchString);
+            Regex regex = new Regex(countReplaceModel.SearchPattern);
             MatchCollection matches;
 
             using (var buffStream = new BufferedStream(File.OpenRead(FilePath), bufferSize))
@@ -41,34 +44,33 @@ namespace FileParser
             return matchCount;
         }
 
-        public int ReplaceString(CountReplaceModel countReplaceModel)
+        public int ReplaceString(MatchCountReplaceModel countReplaceModel)
         {
             int replaceCount = 0;
             string s;
-            Regex regex = new Regex(countReplaceModel.SearchString);
+            Regex regex = new Regex(countReplaceModel.SearchPattern);
 
-            using (var buffReader = new BufferedStream(File.OpenRead(FilePath), bufferSize))
+            using var buffReader = new BufferedStream(File.OpenRead(FilePath), bufferSize);
+            using var buffWriter = new BufferedStream(File.OpenWrite(TEMP_FILE_NAME), bufferSize);
+            using var streamReader = new StreamReader(buffReader);
+            using var streamWriter = new StreamWriter(buffWriter);
+
+            while (!streamReader.EndOfStream)
             {
-                using var buffWriter = new BufferedStream(File.OpenWrite(TEMP_FILE_NAME), bufferSize);
-                using var reader = new StreamReader(buffReader);
-                using var writer = new StreamWriter(buffWriter);
-
-                while (!reader.EndOfStream)
-                {
-                    s = reader.ReadLine();
-                    replaceCount += regex.Matches(s).Count;
-                    s = ReplaceStringWithRegex(s, countReplaceModel.ReplaceString, regex);
-                    writer.WriteLine(s);
-                }
-
-                writer.Flush();
-                writer.Close();
-
-                reader.Close();
-
-                File.Delete(FilePath);
-                File.Move(TEMP_FILE_NAME, FilePath);
+                s = streamReader.ReadLine();
+                replaceCount += regex.Matches(s).Count;
+                s = ReplaceStringWithRegex(s, countReplaceModel.ReplacePattern, regex);
+                streamWriter.WriteLine(s);
             }
+
+            streamWriter.Flush();
+            streamWriter.Close();
+
+            streamReader.Close();
+
+            File.Delete(FilePath);
+            File.Move(TEMP_FILE_NAME, FilePath);
+
 
             return replaceCount;
         }

@@ -1,5 +1,11 @@
-﻿namespace FileParser
+﻿using FileParser.Interfaces;
+using FileParser.Models;
+
+namespace FileParser.Logics
 {
+    /// <summary>
+    /// Represents a text processor for the match count, replacing. Using IOperationProcessor for processing
+    /// </summary>
     class TextProcessor
     {
         #region Private Members
@@ -8,14 +14,23 @@
 
         #endregion
 
-        public CountReplaceModel CountReplaceData { get; set; }
+        public MatchCountReplaceModel CountReplaceData { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the TextProcessor class with the specified IOperationProcessor
+        /// </summary>
+        /// <param name="processor">Processing worker</param>
         public TextProcessor(IOperationProcessor processor)
         {
             worker = processor;
         }
 
-        public TextProcessor(IOperationProcessor processor, CountReplaceModel data) :
+        /// <summary>
+        /// Initializes a new instance of the TextProcessor class with the specified IOperationProcessor and MatchCountReplaceModel
+        /// </summary>
+        /// <param name="processor">Processing worker</param>
+        /// <param name="data">Input search and replace string patterns</param>
+        public TextProcessor(IOperationProcessor processor, MatchCountReplaceModel data) :
             this(processor)
         {
             CountReplaceData = data;
@@ -26,12 +41,12 @@
             return CountSubstring(CountReplaceData);
         }
 
-        public int CountSubstring(CountReplaceModel countReplaceData)
+        public int CountSubstring(MatchCountReplaceModel countReplaceData)
         {
             return worker.MatchCount(countReplaceData);
         }
 
-        public int ReplaceSubstring(CountReplaceModel countReplaceData)
+        public int ReplaceSubstring(MatchCountReplaceModel countReplaceData)
         {
             return worker.ReplaceString(countReplaceData);
         }
@@ -43,7 +58,7 @@
 
         public int StartAutoParsing()
         {
-            if (CountReplaceData.ReplaceString != null)
+            if (CountReplaceData.ReplacePattern != null)
             {
                 return ReplaceSubstring();
             }

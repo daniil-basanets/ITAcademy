@@ -1,8 +1,15 @@
-﻿namespace FileParser
+﻿using FileParser.Models;
+
+namespace FileParser.Interfaces
 {
     interface IOperationProcessor
     {
-        int MatchCount(CountReplaceModel countReplaceModel);
-        int ReplaceString(CountReplaceModel countReplaceModel);
+        /// <summary>
+        /// Count matches for regex pattern 
+        /// </summary>
+        /// <param name="countReplaceModel">Input data for match count or replace</param>
+        /// <returns>Number of matches</returns>
+        int MatchCount(MatchCountReplaceModel countReplaceModel);
+        int ReplaceString(MatchCountReplaceModel countReplaceModel);
     }
 }

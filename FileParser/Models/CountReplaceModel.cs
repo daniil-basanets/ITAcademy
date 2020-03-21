@@ -1,14 +1,17 @@
-﻿namespace FileParser
+﻿namespace FileParser.Models
 {
-    class CountReplaceModel
+    /// <summary>
+    /// Stores search and replace string patterns
+    /// </summary>
+    class MatchCountReplaceModel
     {
-        public string SearchString { get; set; }
-        public string ReplaceString { get; set; }
+        public string SearchPattern { get; set; }
+        public string ReplacePattern { get; set; }
 
-        public CountReplaceModel(string searchString, string replaceString)
+        public MatchCountReplaceModel(string searchPattern, string replacePattern)
         {
-            SearchString = searchString;
-            ReplaceString = replaceString;
+            SearchPattern = searchPattern;
+            ReplacePattern = replacePattern;
         }
     }
 }
