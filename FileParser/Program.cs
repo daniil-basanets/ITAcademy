@@ -10,9 +10,9 @@ namespace FileParser
     class Program
     {
         public static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        const string HELP_STRING = "\n\r[HELP] Use parameters: \n\rfileName searchPattern\n\rfileName searchPattern replacePattern";
+        private const string HELP_STRING = "\n\r[HELP] Use parameters: \n\rfileName searchPattern\n\rfileName searchPattern replacePattern";
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             #region Initialize logger
 

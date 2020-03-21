@@ -9,8 +9,8 @@ namespace FileParser.Logics
     {
         #region Private Members
 
-        const string TEMP_FILE_NAME = "Temp_FileParser_File";
-        const int DEFAULT_BUFFER_SIZE = 4096;
+        private const string TEMP_FILE_NAME = "Temp_FileParser_File";
+        private const int DEFAULT_BUFFER_SIZE = 4096;
         private readonly int bufferSize;
 
         #endregion
