@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using HelpersLibrary;
+using Sequences.Interfaces;
 
-namespace Sequences
+namespace Sequences.Logics
 {
     class Fibonacci : ISequence
     {
@@ -22,9 +24,9 @@ namespace Sequences
             }
         }
 
-        public IList<long> Generate(int startIndex, int endIndex)
+        public IList<long> Generate(IntRange range)
         {
-            var result = GetEnumerator().Skip(startIndex - 1).Take(endIndex - startIndex + 1).ToList();
+            var result = GetEnumerator().Skip(range.Start - 1).Take(range.Count() + 1).ToList();
 
             return result;
         }

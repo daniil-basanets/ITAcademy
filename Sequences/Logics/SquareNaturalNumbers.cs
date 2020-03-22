@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using HelpersLibrary;
+using Sequences.Interfaces;
 
-namespace Sequences
+namespace Sequences.Logics
 {
     class SquareNaturalNumbers : ISequence
     {
-        public IList<long> Generate(int startIndex, int endIndex)
+        public IList<long> Generate(IntRange range)
         {
             var resultSequience = new List<long>();
-            var sqrt = Math.Sqrt(endIndex);
+            var sqrt = Math.Sqrt(range.End);
 
-            for (long i = startIndex; i < sqrt; i++)
+            for (long i = range.Start; i < sqrt; i++)
             {
                 resultSequience.Add(i);
             }

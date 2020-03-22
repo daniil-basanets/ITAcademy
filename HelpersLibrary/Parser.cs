@@ -3,28 +3,51 @@ using System.Globalization;
 
 namespace HelpersLibrary
 {
+    public struct IntRange
+    {
+        public IntRange(int start, int end)
+        {
+            Start = start;
+            End = end;
+        }
+
+        public int Start { get; set; }
+        public int End { get; set; }
+
+        public int Count()
+        {
+            return End - Start;
+        }
+    }
+
     /// <summary>
     /// Represents static class for parsing with additional errors info.
     /// </summary>
     public static class Parser
     {
-      /*  static public ErrorCode TryGetRange(string[] s, out int start, out int end)
+        static public IntRange TryGetRange(string[] s, out ErrorCode errorCode)
         {
-            start = 0;
-            end = 0;
+            errorCode = ErrorCode.Void;          
+            var start = 0;
+            var end = 0;
+            IntRange range = new IntRange(start, end);
 
             if (s.Length < 2)
             {
-                return ErrorCode.InvalidParametersCount;
+                errorCode = ErrorCode.InvalidParametersCount;
+
+                return range;
             }
 
             if (!Int32.TryParse(s[0], out start) || !Int32.TryParse(s[1], out end))
             {
-                return ErrorCode.CannotConvertParameter;
+                errorCode = ErrorCode.CannotConvertParameter;
+                range.Start = start;
+                range.End = end;
             }
 
-            return ErrorCode.Void;
-        }*/
+            return range;
+        }
 
         static public int TryGetInt(string[] s, int argIndex, out ErrorCode errorCode)
         {
@@ -47,7 +70,7 @@ namespace HelpersLibrary
         static public float TryGetFloat(string[] stringArray, int argIndex, out ErrorCode errorCode)
         {
             float value = 0f;
-            
+
             if (stringArray.Length - 1 < argIndex)
             {
                 errorCode = ErrorCode.InvalidParametersCount;
@@ -57,7 +80,7 @@ namespace HelpersLibrary
             {
                 value = TryGetFloat(stringArray[argIndex], out errorCode);
             }
-                 
+
 
             return value;
         }

@@ -1,5 +1,6 @@
 ﻿using System;
-using Sequence.Helpers;
+using HelpersLibrary;
+using Sequences.Logics;
 
 namespace Sequences
 {
@@ -18,26 +19,26 @@ namespace Sequences
 
         static void Main(string[] args)
         {
-            int startIndex, endIndex, sequenceType;
+            int sequenceType;
             ErrorCode errorCode;
 
-            errorCode = Parser.TryGetInt(args, SEQUENECE_TYPE_INPUT_INDEX, out sequenceType);
+            sequenceType = Parser.TryGetInt(args, SEQUENECE_TYPE_INPUT_INDEX, out errorCode);
             if (errorCode != ErrorCode.Void)
             {
                 PrintError(errorCode);
                 return;
             }
 
-            errorCode = Parser.TryGetRange(args, out startIndex, out endIndex);
+            var range = Parser.TryGetRange(args, out errorCode);
             if (errorCode != ErrorCode.Void)
             {
                 PrintError(errorCode);
                 return;
             }
 
-            if (!Validator.IsNaturalNumber(startIndex) || !Validator.IsNaturalNumber(endIndex)
-                || !Validator.IsNaturalNumber(endIndex - startIndex)
-                || !Validator.IsNumberInRange(endIndex, 0, (sequenceType == 1) ? MAX_FOR_FIBONACCI : Int32.MaxValue))
+            if (!Validator.IsNaturalNumber(range.Start) || !Validator.IsNaturalNumber(range.End)
+                || !Validator.IsNaturalNumber(range.Count())
+                || !Validator.IsNumberInRange(range.End, 0, (sequenceType == 1) ? MAX_FOR_FIBONACCI : Int32.MaxValue))
             {
                 PrintError(ErrorCode.OverflowRange);
                 return;
@@ -57,7 +58,7 @@ namespace Sequences
                     return;
             }
 
-            sequenceCalculator.PrintGeneratedString(startIndex, endIndex, ',');
+            sequenceCalculator.PrintGeneratedString(range, ',');
 
             sequenceCalculator.SetSequence(new Fibonacci());
         }

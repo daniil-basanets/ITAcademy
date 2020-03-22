@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using HelpersLibrary;
+using Sequences.Interfaces;
 
-namespace Sequences
+namespace Sequences.Logics
 {
     class SequenceCalculator
     {
@@ -21,14 +23,14 @@ namespace Sequences
             this.sequence = sequence;
         }
 
-        public IList<long> Generate(int startIndex, int endIndex)
+        public IList<long> Generate(IntRange range)
         {
-            return sequence.Generate(startIndex, endIndex);
+            return sequence.Generate(range);
         }
 
-        public void PrintGeneratedString(int startIndex, int endIndex, char separator)
+        public void PrintGeneratedString(IntRange range, char separator)
         {
-            var result = Generate(startIndex, endIndex);
+            var result = Generate(range);
             for (int i = 0; i < result.Count - 1; i++)
             {
                 Console.Write("{0},", result[i]);
