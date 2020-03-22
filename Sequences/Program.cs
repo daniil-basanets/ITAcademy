@@ -32,8 +32,12 @@ namespace Sequences
             #endregion
 
             SequenceType sequenceType;
-            var sequenceTypeString = Parser.TryGetInt(args, SEQUENECE_TYPE_INPUT_INDEX, out ErrorCode errorCode);
+            int sequenceTypeString;
+            IntRange range;
 
+            #region Check input data
+
+            sequenceTypeString = Parser.TryGetInt(args, SEQUENECE_TYPE_INPUT_INDEX, out ErrorCode errorCode);
             if (errorCode != ErrorCode.Void)
             {
                 ConsoleShowError(errorCode);
@@ -52,7 +56,7 @@ namespace Sequences
                 sequenceType = (SequenceType)sequenceTypeString;
             }
 
-            var range = Parser.TryGetRange(args, out errorCode);
+            range = Parser.TryGetRange(args, out errorCode);
             if (errorCode != ErrorCode.Void)
             {
                 ConsoleShowError(errorCode);
@@ -67,10 +71,12 @@ namespace Sequences
                 return;
             }
 
+            #endregion
+
             SequenceCalculator sequenceCalculator = new SequenceCalculator(SequenceFactory.Build(sequenceType));
 
             sequenceCalculator.PrintGeneratedString(range, ',');
-            sequenceCalculator.SetSequence(new Fibonacci());
+            Console.ReadKey();
 
             log.Info("Application [FileParser] End");
         }

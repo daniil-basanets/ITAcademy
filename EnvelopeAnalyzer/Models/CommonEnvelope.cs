@@ -9,7 +9,7 @@ namespace EnvelopeAnalyzer.Models
 
         public CommonEnvelope InnerItem
         {
-            get { return innerItem; }
+            get => innerItem;
             set
             {
                 if (IsEnoughSpaceFor(value))

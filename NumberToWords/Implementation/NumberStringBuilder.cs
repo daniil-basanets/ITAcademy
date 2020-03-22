@@ -80,5 +80,14 @@ namespace NumberToWords.Implementation
             return GetStringBuilder(sourceNumber).ToString().Trim();
         }
 
+        public string GetString()
+        {
+            return GetString(number);
+        }
+
+        public StringBuilder GetStringBuilder()
+        {
+            return GetStringBuilder(number);
+        }
     }
 }

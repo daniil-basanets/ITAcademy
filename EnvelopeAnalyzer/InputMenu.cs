@@ -17,9 +17,8 @@ namespace EnvelopeAnalyzer
         {
             float width;
             float height;
-            ErrorCode errorCode;
 
-            width = Parser.TryGetFloat(args, 0, out errorCode);
+            width = Parser.TryGetFloat(args, 0, out ErrorCode errorCode);
             if (errorCode != ErrorCode.Void)
             {
                 return null;
@@ -39,8 +38,6 @@ namespace EnvelopeAnalyzer
         public static void Start(string[] args)
         {
             CommonEnvelope firstEnvelope = GetEnvelopeFromArgs(args);
-            CommonEnvelope secondEnvelope = null;
-
             do
             {
                 if (firstEnvelope == null)
@@ -48,8 +45,7 @@ namespace EnvelopeAnalyzer
                     firstEnvelope = AskInputNewEnvelope("first");
                 }
 
-                secondEnvelope = AskInputNewEnvelope("second");
-
+                CommonEnvelope secondEnvelope = AskInputNewEnvelope("second");
                 if (firstEnvelope.IsEnoughSpaceFor(secondEnvelope))
                 {
                     firstEnvelope.InnerItem = secondEnvelope;
@@ -67,7 +63,6 @@ namespace EnvelopeAnalyzer
 
 
                 firstEnvelope = null;
-                secondEnvelope = null;
             } while (AskInputContinue());
         }
 
@@ -84,7 +79,6 @@ namespace EnvelopeAnalyzer
             float width;
             float height;
             string s;
-            ErrorCode errorCode;
             CommonEnvelope envelope = null;
 
             do
@@ -92,7 +86,7 @@ namespace EnvelopeAnalyzer
                 Console.WriteLine("\r\nPlease, set {0} Envelope`s", envelopeName);
                 Console.Write("width: ");
                 s = Console.ReadLine();
-                width = Parser.TryGetFloat(s, out errorCode);
+                width = Parser.TryGetFloat(s, out ErrorCode errorCode);
                 if (errorCode != ErrorCode.Void)
                 {
                     Console.WriteLine(errorCode.GetMessage());

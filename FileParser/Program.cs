@@ -15,7 +15,7 @@ namespace FileParser
         private static void Main(string[] args)
         {
             string fileName;
-            
+
             #region Initialize logger
 
             var logRepository = LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly());
@@ -23,10 +23,7 @@ namespace FileParser
             log.Info("Application [FileParser] Start");
 
             #endregion
-            #region Check input data
-
-            #endregion
-
+            
             #region Check input data
 
             fileName = Parser.TryGetString(args, 0, out ErrorCode errorCode);
@@ -53,12 +50,12 @@ namespace FileParser
 
                 return;
             }
-            
+
             #endregion
 
             var searchReplaceData = new MatchCountReplaceModel(args[1], args.Length == 3 ? args[2] : null);
 
-            
+
             TextProcessor textProcessor = new TextProcessor(new FileProcessor(fileName), searchReplaceData);
 
             for (int i = 0; i < 10; i++)

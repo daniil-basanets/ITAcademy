@@ -30,7 +30,7 @@ namespace HelpersLibrary
                 stringBuilder.Append(" ");
                 stringBuilder.Append(additionalText);
             }
-            
+
             log.Error(stringBuilder.ToString());
 
             return stringBuilder.ToString();

@@ -1,22 +1,26 @@
-﻿using NumberToWords.Implementation;
-using System;
+﻿using System;
+using NumberToWords.Implementation;
+using HelpersLibrary;
 
 namespace NumberToWords
 {
     class Program
     {
+        private const string HELP_STRING = "\n\r[HELP] Use parameters: number";
+
         static void Main(string[] args)
         {
-            var rand = new Random();
-            for (int i = 0; i < 150; i++)
+            int number = Parser.TryGetInt(args, 0, out ErrorCode errorCode);
+            if (errorCode != ErrorCode.Void)
             {
-                var m = rand.Next() * 10;
-                //Console.WriteLine(m.ToString("#,#", CultureInfo.InvariantCulture) + " " + new NumberStringBuilder(m).GetString(m));
-                Console.WriteLine(new NumberStringBuilder(m).GetString(m));
+                Console.WriteLine(errorCode.GetMessage());
+                Console.WriteLine(HELP_STRING);
+
+                return;
             }
 
-            Console.ReadLine();
-
+            Console.WriteLine(new NumberStringBuilder(number).GetString());
+            Console.ReadKey();
         }
     }
 }

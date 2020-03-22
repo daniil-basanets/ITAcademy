@@ -27,7 +27,7 @@ namespace HelpersLibrary
     {
         static public IntRange TryGetRange(string[] s, out ErrorCode errorCode)
         {
-            errorCode = ErrorCode.Void;          
+            errorCode = ErrorCode.Void;
             var start = 0;
             var end = 0;
             IntRange range = new IntRange(start, end);
@@ -62,6 +62,24 @@ namespace HelpersLibrary
                 return value;
             }
             else if (!int.TryParse(s[argIndex], out value))
+            {
+                errorCode = ErrorCode.CannotConvertParameter;
+            }
+
+            return value;
+        }
+
+        static public long TryGetLong(string[] s, int argIndex, out ErrorCode errorCode)
+        {
+            errorCode = ErrorCode.Void;
+            long value = 0L;
+
+            if (s.Length - 1 < argIndex)
+            {
+                errorCode = ErrorCode.InvalidParametersCount;
+                return value;
+            }
+            else if (!long.TryParse(s[argIndex], out value))
             {
                 errorCode = ErrorCode.CannotConvertParameter;
             }

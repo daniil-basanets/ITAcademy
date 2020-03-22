@@ -29,7 +29,7 @@ namespace FileParser.Logics
             string s;
             Regex regex = new Regex(countReplaceModel.SearchPattern);
             MatchCollection matches;
-            
+
             using var buffStream = new BufferedStream(File.OpenRead(FilePath), bufferSize);
             using var stream = new StreamReader(buffStream);
 
@@ -77,7 +77,7 @@ namespace FileParser.Logics
 
         public static string ReplaceStringWithRegex(string input, string replacement, Regex regex)
         {
-            if(input == "" || replacement =="" || regex.ToString() == "")
+            if (input == "" || replacement == "" || regex.ToString() == "")
             {
                 return input;
             }

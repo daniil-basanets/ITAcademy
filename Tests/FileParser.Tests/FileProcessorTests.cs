@@ -98,7 +98,6 @@ namespace FileParser.Tests
             //arrange
             string sourceText = "";
             string expectedText = "";
-           // string searchString = "";
             string replaceString = "setup";
             Regex regex = new Regex(searchString);
 
