@@ -3,7 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace SortFigure.Models
 {
-    abstract class Figure: IComparable<Figure>
+    abstract class Figure : IComparable<Figure>
     {
         public string Name { get; set; }
         public abstract float Square { get; }

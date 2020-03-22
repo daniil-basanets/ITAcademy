@@ -28,9 +28,9 @@ namespace SortFigure
             FigureHandler figureHandler = new FigureHandler();
             for (int i = 0; i < 10; i++)
             {
-                a += i ;
+                a += i;
                 b += i;
-                c += i ;
+                c += i;
                 figureHandler.AddFigure(new Triangle(a, b, c, "first " + c));
             }
 

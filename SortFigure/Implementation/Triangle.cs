@@ -1,8 +1,6 @@
 ﻿using HelpersLibrary;
 using SortFigure.Models;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SortFigure.Implementation
 {
@@ -48,18 +46,9 @@ namespace SortFigure.Implementation
             }
         }
 
-        public override float Square
-        {
-            get => GetSquare();
-        }
+        public override float Square => GetSquare();
 
-        public override float Perimeter
-        {
-            get
-            {
-                return sideA + sideB + sideC;
-            }
-        }
+        public override float Perimeter => sideA + sideB + sideC;
 
         private float GetSquare()
         {
@@ -69,7 +58,7 @@ namespace SortFigure.Implementation
 
         public Triangle(float sideA, float sideB, float sideC, string name)
         {
-            if(!Validator.IsValidTriangle(sideA, sideB, sideC))
+            if (!Validator.IsValidTriangle(sideA, sideB, sideC))
             {
                 throw new ArgumentException(ErrorCode.IncorrectTriangle.GetMessage());
             }

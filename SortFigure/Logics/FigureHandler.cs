@@ -1,13 +1,12 @@
-﻿using SortFigure.Models;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text;
+using SortFigure.Models;
 
 namespace SortFigure.Logics
 {
     class FigureHandler
     {
-        private List<Figure> figures;
+        private readonly List<Figure> figures;
 
         public Figure this[int index]
         {
@@ -19,10 +18,7 @@ namespace SortFigure.Logics
                 }
                 return figures[index];
             }
-            set
-            {
-                figures[index] = value;
-            }
+            set => figures[index] = value;
         }
 
         public FigureHandler()
