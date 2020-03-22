@@ -31,6 +31,12 @@ namespace Sequences.Logics
         public void PrintGeneratedString(IntRange range, char separator)
         {
             var result = Generate(range);
+            if (result.Count == 0)
+            {
+                Console.WriteLine("No elements in the sequence");
+
+                return;
+            }
             for (int i = 0; i < result.Count - 1; i++)
             {
                 Console.Write("{0},", result[i]);

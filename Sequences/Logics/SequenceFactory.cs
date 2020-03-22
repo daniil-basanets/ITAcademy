@@ -8,8 +8,8 @@ namespace Sequences.Logics
 {
     public enum SequenceType
     {
-        SquareNaturalNumbers = 1,
-        Fibonacci = 2
+        Fibonacci = 1,
+        SquareNaturalNumbers = 2     
     }
 
     public static class SequenceFactory

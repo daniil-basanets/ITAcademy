@@ -58,14 +58,6 @@ namespace FileParser
 
             TextProcessor textProcessor = new TextProcessor(new FileProcessor(fileName), searchReplaceData);
 
-            for (int i = 0; i < 10; i++)
-            {
-                var stopwatch = System.Diagnostics.Stopwatch.StartNew();
-                textProcessor.StartAutoParsing();
-                stopwatch.Stop();
-                Console.WriteLine(((double)(stopwatch.Elapsed.TotalSeconds)).ToString("0.00 s"));
-            }
-
             var count = textProcessor.StartAutoParsing();
             Console.WriteLine("Operation count: " + count);
             Console.ReadKey();
