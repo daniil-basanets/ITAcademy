@@ -5,7 +5,7 @@ using Sequences.Interfaces;
 
 namespace Sequences.Implementation
 {
-    class Fibonacci : ISequence
+    public class Fibonacci : ISequence
     {
         public IEnumerable<long> GetEnumerator()
         {

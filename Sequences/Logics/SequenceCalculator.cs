@@ -5,7 +5,7 @@ using Sequences.Interfaces;
 
 namespace Sequences.Logics
 {
-    class SequenceCalculator
+    public class SequenceCalculator
     {
         #region private members
 

@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumberToWords", "NumberToWo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpersLibrary", "HelpersLibrary\HelpersLibrary.csproj", "{9F8A6908-AA09-40CE-A18F-E43A12DACF9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileParser.Tests", "Tests\FileParser.Tests\FileParser.Tests.csproj", "{9C278706-6458-40E6-A5B9-F6E49ADC7BB8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileParser.Tests", "Tests\FileParser.Tests\FileParser.Tests.csproj", "{9C278706-6458-40E6-A5B9-F6E49ADC7BB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sequence.Test", "Tests\Sequence.Test\Sequence.Test.csproj", "{3152EE64-A926-48F4-85C0-D7BD5314C11F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{9C278706-6458-40E6-A5B9-F6E49ADC7BB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C278706-6458-40E6-A5B9-F6E49ADC7BB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C278706-6458-40E6-A5B9-F6E49ADC7BB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3152EE64-A926-48F4-85C0-D7BD5314C11F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3152EE64-A926-48F4-85C0-D7BD5314C11F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3152EE64-A926-48F4-85C0-D7BD5314C11F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3152EE64-A926-48F4-85C0-D7BD5314C11F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

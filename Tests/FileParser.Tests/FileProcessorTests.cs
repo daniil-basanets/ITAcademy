@@ -21,7 +21,7 @@ namespace FileParser.Tests
             var actual = FileProcessor.ReplaceStringWithRegex(sourceText, replaceString, regex);
 
             //assert
-            Assert.Equal(actual, expectedText);
+            Assert.Equal(expectedText, actual);
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace FileParser.Tests
             var actual = FileProcessor.ReplaceStringWithRegex(sourceText, replaceString, regex);
 
             //assert
-            Assert.Equal(actual, expectedText);
+            Assert.Equal(expectedText, actual);
         }
 
         [Fact]
@@ -55,7 +55,7 @@ namespace FileParser.Tests
             var actual = FileProcessor.ReplaceStringWithRegex(sourceText, replaceString, regex);
 
             //assert
-            Assert.Equal(actual, expectedText);
+            Assert.Equal(expectedText, actual);
         }
 
         [Fact]
@@ -87,7 +87,7 @@ namespace FileParser.Tests
             var actual = FileProcessor.ReplaceStringWithRegex(sourceText, replaceString, regex);
 
             //assert
-            Assert.Equal(actual, expectedText);
+            Assert.Equal(expectedText, actual);
         }
 
         [Theory]
@@ -106,7 +106,7 @@ namespace FileParser.Tests
             var actual = FileProcessor.ReplaceStringWithRegex(sourceText, replaceString, regex);
 
             //assert
-            Assert.Equal(actual, expectedText);
+            Assert.Equal(expectedText, actual);
         }
 
         [Fact]
@@ -123,7 +123,7 @@ namespace FileParser.Tests
             var actual = FileProcessor.ReplaceStringWithRegex(sourceText, replaceString, regex);
 
             //assert
-            Assert.Equal(actual, expectedText);
+            Assert.Equal(expectedText, actual);
         }
     }
 

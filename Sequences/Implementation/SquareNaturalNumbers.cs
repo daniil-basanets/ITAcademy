@@ -5,7 +5,7 @@ using Sequences.Interfaces;
 
 namespace Sequences.Implementation
 {
-    class SquareNaturalNumbers : ISequence
+    public class SquareNaturalNumbers : ISequence
     {
         public IList<long> Generate(IntRange range)
         {
