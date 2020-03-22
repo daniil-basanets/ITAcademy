@@ -1,10 +1,10 @@
 ﻿using log4net;
 using Sequences.Interfaces;
-using Sequences.Logics;
+using Sequences.Implementation;
 using System;
 using System.Text;
 
-namespace Sequence.Logics
+namespace Sequences.Logics
 {
     public enum SequenceType
     {

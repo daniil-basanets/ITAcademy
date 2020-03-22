@@ -3,11 +3,11 @@ using System.Linq;
 using HelpersLibrary;
 using Sequences.Interfaces;
 
-namespace Sequences.Logics
+namespace Sequences.Implementation
 {
     class Fibonacci : ISequence
     {
-        private IEnumerable<long> GetEnumerator()
+        public IEnumerable<long> GetEnumerator()
         {
             long prevElement = 1;
             long currentElement = 1;

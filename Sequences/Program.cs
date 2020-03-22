@@ -2,8 +2,8 @@
 using HelpersLibrary;
 using log4net;
 using log4net.Config;
-using Sequence.Logics;
 using Sequences.Logics;
+using Sequences.Implementation;
 
 namespace Sequences
 {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using HelpersLibrary;
 using Sequences.Interfaces;
 
-namespace Sequences.Logics
+namespace Sequences.Implementation
 {
     class SquareNaturalNumbers : ISequence
     {
