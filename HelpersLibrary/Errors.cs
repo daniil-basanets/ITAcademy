@@ -12,7 +12,8 @@ namespace HelpersLibrary
         FileNotFound = 4,
         InvalidProperty = 5,
         StringIsEmpty = 6,
-        InvalidParameter = 7
+        InvalidParameter = 7,
+        IncorrectTriangle = 8
     }
 
     public static class Errors
@@ -20,7 +21,7 @@ namespace HelpersLibrary
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         private static readonly string[] errorMessages = { "", "Invalid parameters count!", "Cannot convert parameter!",
-            "Invalid parameter range!", "File not found!", "Invalid property", "String is empty", "Invalid parameter: " };
+            "Invalid parameter range!", "File not found!", "Invalid property", "String is empty", "Invalid parameter: ", "Incorrect triangle!" };
 
         public static string GetMessage(this ErrorCode errorCode, string additionalText = null)
         {
