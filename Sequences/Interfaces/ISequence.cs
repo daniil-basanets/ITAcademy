@@ -3,7 +3,7 @@ using HelpersLibrary;
 
 namespace Sequences.Interfaces
 {
-    interface ISequence
+    public interface ISequence
     {
         public IList<long> Generate(IntRange range);
     }

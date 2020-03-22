@@ -15,12 +15,12 @@ namespace Sequences.Logics
 
         public SequenceCalculator(ISequence sequence)
         {
-            this.sequence = sequence;
+            this.sequence = sequence ?? throw new ArgumentNullException(nameof(sequence));
         }
 
         public void SetSequence(ISequence sequence)
         {
-            this.sequence = sequence;
+            this.sequence = sequence ?? throw new ArgumentNullException(nameof(sequence));
         }
 
         public IList<long> Generate(IntRange range)

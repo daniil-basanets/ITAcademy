@@ -42,9 +42,11 @@ namespace HelpersLibrary
             if (!Int32.TryParse(s[0], out start) || !Int32.TryParse(s[1], out end))
             {
                 errorCode = ErrorCode.CannotConvertParameter;
-                range.Start = start;
-                range.End = end;
+
+                return range;
             }
+            range.Start = start;
+            range.End = end;
 
             return range;
         }

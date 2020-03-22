@@ -23,12 +23,13 @@ namespace FileParser
             log.Info("Application [FileParser] Start");
 
             #endregion
+            #region Check input data
+
+            #endregion
 
             #region Check input data
 
-            ErrorCode errorCode;
-
-            fileName = Parser.TryGetString(args, 0, out errorCode);
+            fileName = Parser.TryGetString(args, 0, out ErrorCode errorCode);
             if (errorCode != ErrorCode.Void)
             {
                 Console.WriteLine(errorCode.GetMessage());
@@ -68,8 +69,9 @@ namespace FileParser
                 Console.WriteLine(((double)(stopwatch.Elapsed.TotalSeconds)).ToString("0.00 s"));
             }
 
-            var count = textProcessor.StartAutoParsing();            
-           
+            var count = textProcessor.StartAutoParsing();
+            Console.WriteLine("Operation count: " + count);
+            Console.ReadKey();
 
             log.Info("Application [FileParser] End");
         }
