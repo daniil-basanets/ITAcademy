@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnvelopeAnalyzer", "Envelop
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumberToWords", "NumberToWords\NumberToWords.csproj", "{3D7C6863-137C-4D71-930F-3C6BE2E6DCDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelpersLibrary", "HelpersLibrary\HelpersLibrary.csproj", "{9F8A6908-AA09-40CE-A18F-E43A12DACF9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelpersLibrary", "HelpersLibrary\HelpersLibrary.csproj", "{9F8A6908-AA09-40CE-A18F-E43A12DACF9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileParser.Tests", "Tests\FileParser.Tests\FileParser.Tests.csproj", "{9C278706-6458-40E6-A5B9-F6E49ADC7BB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{9F8A6908-AA09-40CE-A18F-E43A12DACF9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F8A6908-AA09-40CE-A18F-E43A12DACF9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F8A6908-AA09-40CE-A18F-E43A12DACF9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C278706-6458-40E6-A5B9-F6E49ADC7BB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C278706-6458-40E6-A5B9-F6E49ADC7BB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C278706-6458-40E6-A5B9-F6E49ADC7BB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C278706-6458-40E6-A5B9-F6E49ADC7BB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

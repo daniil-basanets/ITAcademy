@@ -2,7 +2,7 @@
 
 namespace FileParser.Interfaces
 {
-    interface IOperationProcessor
+    public interface IOperationProcessor
     {
         /// <summary>
         /// Count matches for regex pattern 

@@ -3,7 +3,7 @@
     /// <summary>
     /// Stores search and replace string patterns
     /// </summary>
-    class MatchCountReplaceModel
+    public class MatchCountReplaceModel
     {
         public string SearchPattern { get; set; }
         public string ReplacePattern { get; set; }

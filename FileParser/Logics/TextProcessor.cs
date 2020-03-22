@@ -7,7 +7,7 @@ namespace FileParser.Logics
     /// <summary>
     /// Represents a text processor for the match count, replacing. Using IOperationProcessor for processing
     /// </summary>
-    internal class TextProcessor
+    public class TextProcessor
     {
         #region Private Members
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);

@@ -5,7 +5,7 @@ using FileParser.Models;
 
 namespace FileParser.Logics
 {
-    class FileProcessor : IOperationProcessor
+    public class FileProcessor : IOperationProcessor
     {
         #region Private Members
 
@@ -77,6 +77,11 @@ namespace FileParser.Logics
 
         public static string ReplaceStringWithRegex(string input, string replacement, Regex regex)
         {
+            if(input == "" || replacement =="" || regex.ToString() == "")
+            {
+                return input;
+            }
+
             if (regex.IsMatch(input))
             {
                 return regex.Replace(input, replacement);
