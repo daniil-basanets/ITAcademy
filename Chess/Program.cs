@@ -4,9 +4,9 @@ namespace Chess
 {
     class Program
     {
-        const string INVALID_PARAMETERS = "Invalid parameters!";
-        const string OVERFLOW_PARAMETER = "Overflow parameter!";
-        const string HELP_STRING = "[HELP] Use parameters: height[0..255] width[0..255] fill_char";
+        const string InvalidParameters = "Invalid parameters!";
+        const string OverflowParameter = "Overflow parameter!";
+        const string HelpString = "[HELP] Use parameters: height[0..255] width[0..255] fill_char";
 
         static void Main(string[] args)
         {
@@ -30,21 +30,21 @@ namespace Chess
             }
             catch (FormatException)
             {
-                Console.WriteLine(INVALID_PARAMETERS);
-                Console.WriteLine(HELP_STRING);
+                Console.WriteLine(InvalidParameters);
+                Console.WriteLine(HelpString);
 
                 return;
             }
             catch (OverflowException)
             {
-                Console.WriteLine(OVERFLOW_PARAMETER);
-                Console.WriteLine(HELP_STRING);
+                Console.WriteLine(OverflowParameter);
+                Console.WriteLine(HelpString);
 
                 return;
             }
             catch (Exception)
             {
-                Console.WriteLine(HELP_STRING);
+                Console.WriteLine(HelpString);
 
                 return;
             }

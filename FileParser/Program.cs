@@ -10,7 +10,7 @@ namespace FileParser
     class Program
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        private const string HELP_STRING = "\n\r[HELP] Use parameters: \n\rfileName searchPattern\n\rfileName searchPattern replacePattern";
+        private const string HelpString = "\n\r[HELP] Use parameters: \n\rfileName searchPattern\n\rfileName searchPattern replacePattern";
 
         private static void Main(string[] args)
         {
@@ -30,7 +30,7 @@ namespace FileParser
             if (errorCode != ErrorCode.Void)
             {
                 Console.WriteLine(errorCode.GetMessage());
-                Console.WriteLine(HELP_STRING);
+                Console.WriteLine(HelpString);
 
                 return;
             }
@@ -38,7 +38,7 @@ namespace FileParser
             if (args.Length < 2)
             {
                 Console.WriteLine(ErrorCode.InvalidParametersCount.GetMessage());
-                Console.WriteLine(HELP_STRING);
+                Console.WriteLine(HelpString);
 
                 return;
             }
@@ -46,7 +46,7 @@ namespace FileParser
             if (!Validator.IsFileExists(args[0]))
             {
                 Console.WriteLine(ErrorCode.FileNotFound.GetMessage(args[0]));
-                Console.WriteLine(HELP_STRING);
+                Console.WriteLine(HelpString);
 
                 return;
             }

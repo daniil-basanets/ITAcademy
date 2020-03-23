@@ -9,8 +9,8 @@ namespace FileParser.Logics
     {
         #region Private Members
 
-        private const string TEMP_FILE_NAME = "Temp_FileParser_File";
-        private const int DEFAULT_BUFFER_SIZE = 4096;
+        private const string TempFileName = "Temp_FileParser_File";
+        private const int DefaultBufferSize = 4096;
         private readonly int bufferSize;
 
         #endregion
@@ -19,7 +19,7 @@ namespace FileParser.Logics
 
         public FileProcessor(string filePath)
         {
-            bufferSize = DEFAULT_BUFFER_SIZE;
+            bufferSize = DefaultBufferSize;
             FilePath = filePath;
         }
 
@@ -51,7 +51,7 @@ namespace FileParser.Logics
             Regex regex = new Regex(countReplaceModel.SearchPattern);
 
             using var buffReader = new BufferedStream(File.OpenRead(FilePath), bufferSize);
-            using var buffWriter = new BufferedStream(File.OpenWrite(TEMP_FILE_NAME), bufferSize);
+            using var buffWriter = new BufferedStream(File.OpenWrite(TempFileName), bufferSize);
             using var streamReader = new StreamReader(buffReader);
             using var streamWriter = new StreamWriter(buffWriter);
 
@@ -69,7 +69,7 @@ namespace FileParser.Logics
             streamReader.Close();
 
             File.Delete(FilePath);
-            File.Move(TEMP_FILE_NAME, FilePath);
+            File.Move(TempFileName, FilePath);
 
 
             return replaceCount;

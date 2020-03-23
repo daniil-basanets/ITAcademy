@@ -11,7 +11,7 @@ namespace Chess
         private readonly int width;
         private readonly BoardItem[,] board;
         private readonly char blackSymbol = '*';
-        private const char whiteSymbol = ' ';
+        private const char WhiteSymbol = ' ';
 
         #endregion 
 
@@ -48,7 +48,7 @@ namespace Chess
             {
                 for (int j = 0; j < width; j++)
                 {
-                    Console.Write("{0, -2}", board[i, j].IsBlack ? blackSymbol : whiteSymbol);
+                    Console.Write("{0, -2}", board[i, j].IsBlack ? blackSymbol : WhiteSymbol);
                 }
                 Console.WriteLine();
             }

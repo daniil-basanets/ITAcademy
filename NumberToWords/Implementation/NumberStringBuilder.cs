@@ -8,7 +8,7 @@ namespace NumberToWords.Implementation
     {
         #region Private Members
 
-        const int HUNDRED_WORD_INDEX = 0;
+        const int HundredWordIndex = 0;
         private int number;
         private readonly IStringNumerals numeralsConverter;
         private readonly IStringNumerals largeNumeralsConverter;
@@ -25,7 +25,7 @@ namespace NumberToWords.Implementation
             {
                 stringBuilder = numeralsConverter.GetStringBuilder(hundreds);
                 stringBuilder.Append(" ");
-                stringBuilder.Append(largeNumeralsConverter.GetString(HUNDRED_WORD_INDEX));
+                stringBuilder.Append(largeNumeralsConverter.GetString(HundredWordIndex));
             }
             if (stringBuilder == null)
             {

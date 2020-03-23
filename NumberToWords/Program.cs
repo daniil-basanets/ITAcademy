@@ -6,7 +6,7 @@ namespace NumberToWords
 {
     class Program
     {
-        private const string HELP_STRING = "\n\r[HELP] Use parameters: number";
+        private const string HelpString = "\n\r[HELP] Use parameters: number";
 
         static void Main(string[] args)
         {
@@ -14,7 +14,7 @@ namespace NumberToWords
             if (errorCode != ErrorCode.Void)
             {
                 Console.WriteLine(errorCode.GetMessage());
-                Console.WriteLine(HELP_STRING);
+                Console.WriteLine(HelpString);
 
                 return;
             }

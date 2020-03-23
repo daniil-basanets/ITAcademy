@@ -10,14 +10,14 @@ namespace Sequences
     class Program
     {
         private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod()?.DeclaringType);
-        const string HELP_STRING = "[HELP] Use parameters: StartIndex EndIndex SequenceType\n\rwhere SequenceType: 1 - Fibonacci, 2 - Square natural numbers\n\rmax endIndex for Fibonacci is 92";
-        const int SEQUENECE_TYPE_INPUT_INDEX = 2;
-        const int MAX_FOR_FIBONACCI = 92;
+        const string HelpString = "[HELP] Use parameters: StartIndex EndIndex SequenceType\n\rwhere SequenceType: 1 - Fibonacci, 2 - Square natural numbers\n\rmax endIndex for Fibonacci is 92";
+        const int SequenceTypeInputIndex = 2;
+        const int MaxForFibonacci = 92;
 
         static void ConsoleShowError(ErrorCode errorCode, string parameter = "")
         {
             Console.WriteLine(errorCode.GetMessage(parameter));
-            Console.WriteLine(HELP_STRING);
+            Console.WriteLine(HelpString);
         }
 
         static void Main(string[] args)
@@ -37,7 +37,7 @@ namespace Sequences
 
             #region Check input data
 
-            sequenceTypeString = Parser.TryGetInt(args, SEQUENECE_TYPE_INPUT_INDEX, out ErrorCode errorCode);
+            sequenceTypeString = Parser.TryGetInt(args, SequenceTypeInputIndex, out ErrorCode errorCode);
             if (errorCode != ErrorCode.Void)
             {
                 ConsoleShowError(errorCode);
@@ -65,7 +65,7 @@ namespace Sequences
 
             if (!Validator.IsNaturalNumber(range.Start) || !Validator.IsNaturalNumber(range.End)
                 || !Validator.IsNaturalNumber(range.Count())
-                || !Validator.IsNumberInRange(range.End, 0, (sequenceType == SequenceType.Fibonacci) ? MAX_FOR_FIBONACCI : Int32.MaxValue))
+                || !Validator.IsNumberInRange(range.End, 0, (sequenceType == SequenceType.Fibonacci) ? MaxForFibonacci : Int32.MaxValue))
             {
                 ConsoleShowError(ErrorCode.OverflowRange);
                 return;
