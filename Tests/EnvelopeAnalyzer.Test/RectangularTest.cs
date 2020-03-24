@@ -137,8 +137,6 @@ namespace EnvelopeAnalyzer.Test
             //arrange
 
             //act
-            //CommonEnvelope envelope1 = new Implementation.Rectangular(width, height);
-            //var minSide = envelope1.MinSide();
             CommonEnvelope envelope;
 
             //assert

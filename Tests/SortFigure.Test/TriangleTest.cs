@@ -1,3 +1,5 @@
+using SortFigure.Implementation;
+using SortFigure.Interfaces;
 using System;
 using Xunit;
 
@@ -5,33 +7,46 @@ namespace SortFigure.Test
 {
     public class TriangleTest
     {
-        [Fact]
-        public void Create_triangle_Negative(float width, float height)
+        [Theory]
+        [InlineData(2f, 3f, 5f)]
+        [InlineData(0f, 3f, 5f)]
+        [InlineData(4f, 0f, 4f)]
+        [InlineData(4f, 3f, 0f)]
+        public void Create_triangle_Negative(float sideA, float sideB, float sideC)
         {
             //arrange
 
             //act
-            //CommonEnvelope envelope1 = new Implementation.Rectangular(width, height);
-            //var minSide = envelope1.MinSide();
-            CommonEnvelope envelope;
+            Triangle triangle;
 
             //assert
-            Assert.Throws<ArgumentException>(() => envelope = new Implementation.Rectangular(width, height));
+            Assert.Throws<ArgumentException>(() => triangle = new Implementation.Triangle(sideA, sideB, sideC, "testTriangle"));
         }
 
         [Fact]
-        public void Test1()
+        public void Perimeter_Positive()
         {
             //arrange
 
             //act
-            CommonEnvelope envelope1 = new Implementation.Rectangular(width1, height1);
-            CommonEnvelope envelope2 = new Implementation.Rectangular(width2, height2);
-
-            var actual_space_check = envelope1.IsEnoughSpaceFor(envelope2);
+            Figure triangle = new Implementation.Triangle(2f, 3f, 4f, "testTriangle");
+            float perimeter = triangle.Perimeter;
 
             //assert
-            Assert.True(actual_space_check);
+            Assert.Equal(9f, perimeter);
+        }
+
+        [Fact]
+        public void Square_Positive()
+        {
+            //arrange
+
+            //act
+            Figure triangle = new Implementation.Triangle(2f, 3f, 4f, "testTriangle");
+            float square = triangle.Square;
+
+            //assert
+            Assert.Equal(2.9047374725341797, square);
         }
     }
 }

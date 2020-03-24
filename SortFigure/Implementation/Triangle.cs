@@ -4,7 +4,7 @@ using System;
 
 namespace SortFigure.Implementation
 {
-    class Triangle : Figure
+    public class Triangle : Figure
     {
         private float sideA;
         private float sideB;
