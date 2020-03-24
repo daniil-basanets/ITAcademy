@@ -163,7 +163,7 @@ namespace SortFigure
             catch (Exception e)
             {
                 log.Error(e);
-                throw;
+                Console.WriteLine(e.Message);
             }
 
         }

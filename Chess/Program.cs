@@ -1,15 +1,28 @@
-﻿using System;
+﻿using log4net;
+using log4net.Config;
+using System;
 
 namespace Chess
 {
     class Program
     {
+        private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         const string InvalidParameters = "Invalid parameters!";
         const string OverflowParameter = "Overflow parameter!";
         const string HelpString = "[HELP] Use parameters: height[0..255] width[0..255] fill_char";
 
         static void Main(string[] args)
         {
+
+            #region Initialize logger
+
+            var logRepository = LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new System.IO.FileInfo("Log4Net.config"));
+            log.Info("Application [FileParser] Start");
+
+            #endregion
+
+
             int height;
             int width;
             char c = '*';
@@ -28,29 +41,41 @@ namespace Chess
                     c = Convert.ToChar(args[2]);
                 }
             }
-            catch (FormatException)
+            catch (FormatException fe)
             {
                 Console.WriteLine(InvalidParameters);
                 Console.WriteLine(HelpString);
+                log.Error(fe);
 
                 return;
             }
-            catch (OverflowException)
+            catch (OverflowException oe)
             {
                 Console.WriteLine(OverflowParameter);
                 Console.WriteLine(HelpString);
+                log.Error(oe);
 
                 return;
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 Console.WriteLine(HelpString);
+                log.Error(e);
 
                 return;
             }
 
-            Сhessboard сhessboard = new Сhessboard(width, height, c);
-            сhessboard.DrawBoard();
+            try
+            {
+                Сhessboard сhessboard = new Сhessboard(width, height, c);
+                сhessboard.DrawBoard();
+
+            }
+            catch (Exception e)
+            {
+                log.Error(e);
+                Console.WriteLine(e.Message);
+            }
 
             Console.ReadKey();
         }
