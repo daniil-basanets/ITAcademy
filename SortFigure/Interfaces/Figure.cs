@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace SortFigure.Models
+namespace SortFigure.Interfaces
 {
     abstract class Figure : IComparable<Figure>
     {

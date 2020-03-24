@@ -1,5 +1,5 @@
 ﻿using HelpersLibrary;
-using SortFigure.Models;
+using SortFigure.Interfaces;
 using System;
 
 namespace SortFigure.Implementation

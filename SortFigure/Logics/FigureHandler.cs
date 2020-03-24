@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Text;
-using SortFigure.Models;
+using SortFigure.Interfaces;
 
 namespace SortFigure.Logics
 {
