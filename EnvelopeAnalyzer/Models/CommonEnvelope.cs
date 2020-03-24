@@ -3,7 +3,7 @@ using System;
 
 namespace EnvelopeAnalyzer.Models
 {
-    abstract class CommonEnvelope
+    public abstract class CommonEnvelope
     {
         private CommonEnvelope innerItem;
 

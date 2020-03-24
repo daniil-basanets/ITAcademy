@@ -1,8 +1,9 @@
 ﻿using EnvelopeAnalyzer.Models;
+using System;
 
 namespace EnvelopeAnalyzer.Implementation
 {
-    class Rectangular : CommonEnvelope
+    public class Rectangular : CommonEnvelope
     {
         #region Private Members
 
@@ -14,6 +15,10 @@ namespace EnvelopeAnalyzer.Implementation
 
         public Rectangular(float width, float height)
         {
+            if (width <= 0 || height <= 0)
+            {
+                throw new ArgumentException("Negative width or height!");
+            }
             this.width = width;
             this.height = height;
         }
