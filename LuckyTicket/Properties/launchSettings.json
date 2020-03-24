@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "LuckyTicket": {
+      "commandName": "Project",
+      "commandLineArgs": "t.txt"
+    }
+  }
+}
