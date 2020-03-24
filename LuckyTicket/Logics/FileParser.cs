@@ -1,6 +1,5 @@
 ﻿using LuckyTicket.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
@@ -21,8 +20,29 @@ namespace LuckyTicket.Logics
 
         public LuckyType GetLuckyType()
         {
-            StreamReader streamReader = new StreamReader(fileName);
+            string s = null;
+            using (StreamReader streamReader = new StreamReader(fileName))
+            {
+                s = streamReader.ReadLine().ToLower();
+            }
 
+            LuckyType luckyType;
+            if (s == "piter")
+            {
+                luckyType = LuckyType.Petersberg;
+            }
+            else if (s == "moscow")
+            {
+                luckyType = LuckyType.Moscow;
+            }
+            else
+            {
+                StringBuilder stringBuilder = new StringBuilder("Unknown lucky method: ");
+                stringBuilder.Append(s);
+                throw new ArgumentException(stringBuilder.ToString());
+            }
+
+            return luckyType;
         }
     }
 }
