@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NumberToWords.Implementation
 {
-    class NumberStringBuilder : IStringNumerals
+    public class NumberStringBuilder : IStringNumerals
     {
         #region Private Members
 
@@ -54,10 +54,15 @@ namespace NumberToWords.Implementation
             StringBuilder stringBuilder = new StringBuilder();
             int largeNumeralsIndexer = 0;
 
+            if (number == 0)
+            {
+                stringBuilder.Append(" zero");
+            }
+            
             while (number > 0)
             {
                 remainderThousand = number % 1000;
-                if (largeNumeralsIndexer > 0)
+                if (largeNumeralsIndexer > 0 && remainderThousand > 0)
                 {
                     stringBuilder.Insert(0, " " + largeNumeralsConverter.GetString(largeNumeralsIndexer));
                 }
