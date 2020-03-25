@@ -30,6 +30,12 @@ namespace HelpersLibrary
             return IsNumberInRange(number, 0f, float.MaxValue);
         }
 
+        static public bool IsValidTriangle(float sideA, float sideB, float sideC)
+        {
+            return (sideA > 0 && sideB > 0 && sideC > 0) &&
+                (sideA < sideB + sideC && sideB < sideA + sideC && sideC < sideB + sideA);
+        }
+
         static public bool IsFileExists(string fileName)
         {
             if (File.Exists(fileName))
@@ -42,11 +48,6 @@ namespace HelpersLibrary
 
             return false;
         }
-
-        static public bool IsValidTriangle(float sideA, float sideB, float sideC)
-        {
-            return (sideA > 0 && sideB > 0 && sideC > 0) &&
-                (sideA < sideB + sideC && sideB < sideA + sideC && sideC < sideB + sideA);
-        }
+       
     }
 }

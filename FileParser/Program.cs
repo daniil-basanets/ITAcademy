@@ -59,7 +59,7 @@ namespace FileParser
             TextProcessor textProcessor = new TextProcessor(new FileProcessor(fileName), searchReplaceData);
 
             var count = textProcessor.StartAutoParsing();
-            Console.WriteLine("Operation count: " + count);
+            Console.WriteLine("Operation match/replace count: " + count);
             Console.ReadKey();
 
             log.Info("Application [FileParser] End");
